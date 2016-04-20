@@ -1,0 +1,282 @@
+<dialog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="WatsonDialogDocument_1.0.xsd">
+	<flow>
+		<folder label="Main">
+			<output>
+				<prompt selectionType="RANDOM">
+					<item>Hello, welcome to Etisalat SelfServie!</item>
+				</prompt>
+				<goto ref="getUserInput_2442994" />
+			</output>
+			<output>
+				<prompt selectionType="RANDOM">
+					<item>Can i help you with any question ,Sir?</item>
+				</prompt>
+				<getUserInput id="getUserInput_2442994">
+					<search ref="folder_2449611" />
+					<default>
+						<output>
+							<prompt selectionType="RANDOM">
+								<item>
+									I'm sorry I did not understand your question, please try
+									again.
+								</item>
+							</prompt>
+						</output>
+					</default>
+				</getUserInput>
+			</output>
+		</folder>
+		<folder label="Library">
+			<folder label="Live Content" id="folder_2449611">
+				<input>
+					<grammar>
+						<item>$ install software</item>
+						<item>software</item>
+
+					</grammar>
+					<output>
+						<prompt selectionType="RANDOM">
+							<item>
+								Are you looking for free Or licensed software ?
+							</item>
+						</prompt>
+						<getUserInput>
+							<input>
+								<grammar>
+									<item>licensed</item>
+								</grammar>
+								<output>
+									<prompt selectionType="RANDOM">
+										<item>Please fill the licensed Software Licenses request from
+											http://myitsupport.etisalat.com
+										</item>
+									</prompt>
+								</output>
+							</input>
+							<input>
+								<grammar>
+									<item>free</item>
+								</grammar>
+								<output>
+									<prompt selectionType="RANDOM">
+										<item>Please fill the Free Software Licenses request from
+											http://myitsupport.etisalat.com
+										</item>
+									</prompt>
+								</output>
+							</input>
+
+						</getUserInput>
+					</output>
+				</input>
+				<input>
+					<grammar>
+						<item>i want to activate package ?</item>
+						<item>$ activate my package</item>
+						<item>$ activate the package *</item>
+					</grammar>
+					<output>
+						<prompt selectionType="RANDOM">
+							<item>Yes of course , what is your nationality?</item>
+						</prompt>
+						<getUserInput>
+							<input>
+								<grammar>
+									<item>egyptian</item>
+								</grammar>
+								<action varName="ZipCode" operator="SET_TO">egyptian</action>
+								<output>
+									<prompt selectionType="RANDOM">
+										<item>Thanks, Done </item>
+									</prompt>
+								</output>
+							</input>
+							<input>
+								<grammar>
+									<item>emirates</item>
+								</grammar>
+								<action varName="ZipCode" operator="SET_TO">emirates</action>
+								<output>
+									<prompt selectionType="RANDOM">
+										<item>Sorry, we are here for egyptians only </item>
+									</prompt>
+								</output>
+							</input>
+
+						</getUserInput>
+					</output>
+				</input>
+				<input>
+					<grammar>
+						<item>how to Reset my CX password ?</item>
+						<item> $ Reset Cx Password </item>
+					</grammar>
+					<output>
+						<prompt selectionType="RANDOM">
+							<item>Please create a TT on the CC HP system
+								(http://10.196.10.13/SM921/index.do)
+								Using the following path:
+								Category: Business Applications
+								Subcategory: Billing and Customer
+								Care
+								Type: CX
+								Problem: Reset Password
+							</item>
+						</prompt>
+					</output>
+				</input>
+
+				<input>
+					<grammar>
+						<item>how to install new software?!</item>
+						<item>$ new software?</item>
+						<item>$ steps to install *</item>
+						<item>Request to install free software</item>
+						<item>$ licensed SW Installation *
+						</item>
+						<item>$ Install licensed SW * ?</item>
+					</grammar>
+					<output>
+						<prompt>
+							<item>Please fill the licensed Software Licenses request from
+								http://myitsupport.etisalat.com
+
+							</item>
+						</prompt>
+					</output>
+				</input>
+
+
+				<input>
+					<grammar>
+						<item>how to install new software?!</item>
+						<item>$ new software?</item>
+						<item>$ stepst to install *</item>
+						<item>Request to install free software</item>
+						<item>$ Free SW Installation *
+						</item>
+						<item>$ Install Free SW * ?</item>
+					</grammar>
+					<output>
+						<prompt>
+							<item>Please fill the Free Software Licenses request from
+								http://myitsupport.etisalat.com
+
+							</item>
+						</prompt>
+					</output>
+				</input>
+
+				<input>
+					<grammar>
+						<item>Access to website</item>
+						<item> Website access *</item>
+						<item> how to Access to website*</item>
+					</grammar>
+					<output>
+						<prompt>
+							<item>Please fill the Blue Coat (Web Site) Access Request from
+								http://myitsupport.etisalat.com
+
+							</item>
+						</prompt>
+					</output>
+				</input>
+
+
+				<input>
+					<grammar>
+						<item> * $ Firewall *
+						</item>
+
+
+					</grammar>
+					<output>
+						<prompt>
+							<item>Please fill one of the following requests from
+								http://myitsupport.etisalat.com
+								and IT to IT Access Through
+								Firewall Request
+								and Tech to Tech Access Through Firewall Request
+								and IT to Tech and
+								Tech to Tech Access Through Firewall Request
+
+							</item>
+						</prompt>
+					</output>
+				</input>
+			</folder>
+			<folder label="Storage" />
+		</folder>
+		<folder label="Global" />
+		<folder label="Concepts">
+			<concept>
+				<grammar>
+					<item>install</item>
+					<item>setup</item>
+					<item>run</item>
+				</grammar>
+			</concept>
+			<concept>
+				<grammar>
+					<item>software</item>
+					<item>sw</item>
+					<item>program</item>
+				</grammar>
+			</concept>
+		</folder>
+	</flow>
+	<constants>
+		<var_folder name="Home" />
+	</constants>
+	<variables>
+		<var_folder name="Home" />
+	</variables>
+	<settings>
+		<setting name="USERIDNUM" type="USER">69745</setting>
+		<setting name="EMAIL" type="USER">mwacho@us.ibm.com</setting>
+		<setting name="PASSWORD" type="USER">mct:6c43efcf28ac1250c656a15e26b28e0
+		</setting>
+		<setting name="FIRSTNAME" type="USER">Matt</setting>
+		<setting name="LASTNAME" type="USER">Wachowiak</setting>
+		<setting name="COUNTRY" type="USER">US</setting>
+		<setting name="STATE" type="USER" />
+		<setting name="CITY" type="USER">New York</setting>
+		<setting name="BDAY" type="USER">1</setting>
+		<setting name="BMONTH" type="USER">1</setting>
+		<setting name="BYEAR" type="USER">2001</setting>
+		<setting name="SEX" type="USER">Male</setting>
+		<setting name="DISPLAYNAME" type="USER">Matthew</setting>
+		<setting name="PROVIDESECURITYPASSWORD" type="USER">false</setting>
+		<setting name="SECURITYPASSWORD" type="USER" />
+		<setting name="SHOWPERSPROFILE" type="USER">false</setting>
+		<setting name="USETYPE" type="USER">0</setting>
+		<setting name="DATEJOINED" type="USER">2014-10-06 15:34:05.0
+		</setting>
+		<setting name="LASTLOGIN" type="USER">2015-04-01 17:31:28.0</setting>
+		<setting name="LOGINCOUNT" type="USER">7</setting>
+		<setting name="CREDIT" type="USER">-100</setting>
+		<setting name="CONVCOUNT" type="USER">55</setting>
+		<setting name="PERSONALITYTYPEID" type="USER">6</setting>
+		<setting name="SHOWSENDMESSAGE" type="USER">true</setting>
+		<setting name="ACTIVATED" type="USER">true</setting>
+		<setting name="MESSENGEREMAIL" type="USER" />
+		<setting name="MESSENGERPASSWORD" type="USER" />
+		<setting name="SENDCHATEMAIL" type="USER">true</setting>
+		<setting name="SENDFAVEMAIL" type="USER">true</setting>
+		<setting name="CACHE" type="USER">false</setting>
+		<setting name="CLASSTYPE" type="USER">3</setting>
+		<setting name="AUTOLEARN" type="USER">false</setting>
+		<setting name="LANGUAGE" type="USER">EN</setting>
+		<setting name="RESPONSETIME" type="USER">0</setting>
+		<setting name="MAXAUTOLEARNITEMS" type="USER">0</setting>
+		<setting name="NUMAUTOSETRELATED" type="USER">0</setting>
+		<setting name="TIMEZONEID" type="USER">Australia/Sydney</setting>
+		<setting name="AUTOSETRELATEDNODEID" type="USER">0</setting>
+		<setting name="RETURNTOCHATNODEID" type="USER">0</setting>
+		<setting name="INPUTMASKTYPE" type="USER">0</setting>
+		<setting name="NUMLOGINATTEMPTS" type="USER">0</setting>
+		<setting name="CONCEPTMATCHING" type="USER">0</setting>
+	</settings>
+</dialog>
